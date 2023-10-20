@@ -1,20 +1,24 @@
-# Transformation related functions and logic go here
 import pandas as pd
 
-def get_exchange_rate(currency_code):
-    df_exchange = pd.read_csv("data/exchange_rates.csv")
-    df_exchange.rename(columns={'Unnamed: 0': 'Currency'}, inplace=True)
-    print("Columns in df_exchange:", df_exchange.columns)  # Debugging line
+def get_exchange_rate(currency_code, df_exchange):
+    rate = df_exchange.loc[df_exchange['Currency'] == currency_code, 'Rate']
+    
+    if rate.empty:
+        raise ValueError(f"No exchange rate found for currency {currency_code}")
+    
+    return rate.iloc[0]
 
-    if 'Currency' in df_exchange.columns:
-        return df_exchange.loc[df_exchange['Currency'] == currency_code, 'Rate'].iloc[0]
-    else:
-        print(f"Error: 'Currency' column not found in DataFrame. Available columns are: {df_exchange.columns}")
-        return 1  # Returning a default value, you may handle it differently
+def transform(dataframe, df_exchange, currency_code="GBP"):
+    # Get the exchange rate for the given currency code from df_exchange
+    exchange_rate = df_exchange[df_exchange['Currency'] == currency_code]['Rate'].iloc[0]
+    
+    # Create a copy of the original DataFrame to avoid modifying it
+    transformed_df = dataframe.copy()
 
-
-def transform(df, currency_code):
-    exchange_rate = get_exchange_rate(currency_code)
-    df['Market Cap (US$ Billion)'] = round(df['Market Cap (US$ Billion)'] * exchange_rate, 3)
-    df.rename(columns={'Market Cap (US$ Billion)': f'Market Cap ({currency_code}$ Billion)'}, inplace=True)
-    return df
+    # Update the market cap column
+    transformed_df['Market Cap (US$ Billion)'] *= exchange_rate
+    
+    # Rename the column
+    transformed_df.rename(columns={'Market Cap (US$ Billion)': f'Market Cap ({currency_code}$ Billion)'}, inplace=True)
+    
+    return transformed_df
