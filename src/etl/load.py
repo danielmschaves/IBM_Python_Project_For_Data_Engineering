@@ -1,5 +1,6 @@
 # Loading related functions and logic go here
 import pandas as pd
 
-def load(df, currency_code):
-    df.to_csv(f"data/bank_market_cap_{currency_code}.csv", index=False)
+def load(dataframe, currency, output_path):
+    dataframe.to_csv(output_path, index=False)
+
