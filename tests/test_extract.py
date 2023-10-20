@@ -1,7 +1,3 @@
-import sys
-sys.path.append(r"C:\Users\dmc\IBM_Python_Project_For_Data_Engineering\src")
-
-
 # Importing required libraries and modules
 import json
 import pandas as pd

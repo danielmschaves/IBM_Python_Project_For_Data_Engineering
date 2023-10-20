@@ -1,7 +1,3 @@
-import sys
-sys.path.append(r"C:\Users\dmc\IBM_Python_Project_For_Data_Engineering\src")
-
-
 import pandas as pd
 import pytest
 from ..src.etl.transform import transform  # Assuming transform function is in this module

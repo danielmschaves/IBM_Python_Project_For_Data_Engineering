@@ -1,7 +1,3 @@
-import sys
-sys.path.append(r"C:\Users\dmc\IBM_Python_Project_For_Data_Engineering\src")
-
-
 import os
 import pandas as pd
 from pathlib import Path
