@@ -7,6 +7,15 @@ from load import load
 from extract import extract, extract_exchange_rates  # Import the new function
 
 def log(message):
+    """
+    Logs a message with a timestamp to a log file.
+
+    Parameters:
+    message (str): The message to be logged.
+
+    Side Effects:
+    Appends a message with a timestamp to a log file located at 'logs/logfile.txt'.
+    """
     timestamp_format = '%Y-%h-%d-%H:%M:%S'
     now = datetime.now()
     timestamp = now.strftime(timestamp_format)

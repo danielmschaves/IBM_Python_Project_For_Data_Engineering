@@ -9,6 +9,15 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 def get_api_key_from_config(file_path='config.json'):
+    """
+    Reads the API key from a JSON config file.
+
+    Parameters:
+        file_path (str): The path to the config file. Default is 'config.json'.
+
+    Returns:
+        str: The API key, or None if the key is not found or the file is missing.
+    """
     try:
         with open(file_path, 'r') as f:
             config = json.load(f)
@@ -17,6 +26,15 @@ def get_api_key_from_config(file_path='config.json'):
         return None
 
 def fetch_and_save_exchange_rate(api_key):
+    """
+    Fetches the latest exchange rates using a given API key and saves it as a CSV.
+
+    Parameters:
+        api_key (str): The API key to use for fetching exchange rates.
+
+    Returns:
+        None
+    """
     try:
         logger.info("Starting to fetch exchange rate data...")
         
