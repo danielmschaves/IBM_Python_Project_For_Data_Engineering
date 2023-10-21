@@ -1,5 +1,3 @@
-# exchange_rate_api_scraper.py
-
 import requests
 import pandas as pd
 import os
@@ -20,16 +18,16 @@ def fetch_and_save_exchange_rate(api_key):
         
         # Convert the JSON data to a DataFrame
         json_data = response.json()
-        data = pd.DataFrame.from_dict(json_data)
-        
-        # Drop unnecessary columns and rename the 'rates' column
-        cleaned_data = data.drop(["success", "timestamp", "base", "date"], axis=1).rename(columns={"rates": "Rate"})
+        if 'rates' in json_data:
+            data = pd.DataFrame(list(json_data['rates'].items()), columns=['Currency', 'Rate'])
+        else:
+            logger.error("Rates not found in JSON data")
+            return
         
         # Save the DataFrame to a CSV file
         output_path = os.path.join("data", "exchange_rates.csv")
         logger.info(f"Saving file to: {output_path}")
-        with open(output_path, 'w') as openfile:
-            openfile.write(cleaned_data.to_csv())
+        data.to_csv(output_path, index=False)
             
     except requests.RequestException as e:
         logger.error(f"Failed to fetch data: {e}")
