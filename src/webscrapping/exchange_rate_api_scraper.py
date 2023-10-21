@@ -2,17 +2,26 @@ import requests
 import pandas as pd
 import os
 import logging
+import json
 
 # Initialize logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+def get_api_key_from_config(file_path='config.json'):
+    try:
+        with open(file_path, 'r') as f:
+            config = json.load(f)
+        return config.get('EXCHANGE_API_KEY', None)
+    except FileNotFoundError:
+        return None
 
 def fetch_and_save_exchange_rate(api_key):
     try:
         logger.info("Starting to fetch exchange rate data...")
         
         # Make the API request
-        url = f"https://api.apilayer.com/exchangerates_data/latest?base=EUR&apikey=VlJF1oqydt0EGDGBSOWxa7Jvx1jLy9ei"
+        url = f"https://api.apilayer.com/exchangerates_data/latest?base=EUR&apikey={api_key}"
         response = requests.get(url)
         response.raise_for_status()  # Check for successful API call
         
@@ -36,6 +45,8 @@ def fetch_and_save_exchange_rate(api_key):
         logger.error(f"An error occurred: {e}")
 
 if __name__ == "__main__":
-    # Replace with your API key
-    api_key = "your_api_key_here"
-    fetch_and_save_exchange_rate(api_key)
+    api_key = get_api_key_from_config()
+    if api_key:
+        fetch_and_save_exchange_rate(api_key)
+    else:
+        print("API Key not found.")
