@@ -1,12 +1,20 @@
-# Data Engineer - ETL Project
+# IBM Python Project for Data Engineering
 
-## Repository Overview
+## Table of Contents
+- [Features](#features)
+- [Scenario](#Scenario)
+- [Installation](#installation)
 
-This repository contains the code and data files for a data engineering project focused on the ETL (Extract, Transform, Load) process. The project involves extracting bank and market cap data from a JSON file, transforming the market cap currency using exchange rate data, and loading the transformed data into a separate CSV file. The ETL process is implemented using Python and several Python libraries, such as pandas, datetime, requests, and BeautifulSoup.
 
-## Phases
+## Features
+- **Data Extraction**: Extracts bank market capitalization data from JSON files and exchange rates from CSV files.
+- **Data Transformation**: Converts bank market caps to different currencies using fetched exchange rates.
+- **Data Loading**: Outputs the transformed data into CSV format.
+- **Logging**: Provides detailed logs for auditing and debugging.
+- **Testing**: Unit tests to validate each component of the pipeline.
 
-### Scenario
+
+## Scenario
 
 As a data engineer working for an international financial analysis company, my job was to collect financial data from various sources such as websites, APIs, and files provided by financial analysis firms. 
 
@@ -22,8 +30,40 @@ As a data engineer working for an international financial analysis company, my j
 
 - Logging: A logging function is implemented to keep track of the ETL process. The function logs messages with timestamps in a file named logfile.txt.
 
-## Conclusion
+## Installation
 
-This project demonstrates a comprehensive ETL process that includes collecting data from APIs, web scraping, extracting data from JSON files, transforming data using exchange rate information, and loading the transformed data into CSV files. The code is organized in a clear and modular manner, making it easy to understand and modify for other ETL tasks. By following the step-by-step instructions in the code, users can learn the essentials of data engineering and gain practical experience in implementing ETL processes.
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/IBM_Python_Project_For_Data_Engineering.git
+cd IBM_Python_Project_For_Data_Engineering
+```
 
+2. Configure python version with `pyenv`:
 
+```bash
+pyenv install 3.11.3
+pyenv local 3.11.3
+```
+3. Install dependencies using Poetry:
+
+```bash
+poetry install
+```
+
+4. Activate the Poetry environment:
+
+```bash
+poetry shell
+```
+
+5. Run the ETL pipeline:
+
+```bash
+python src/etl/etl.py
+```
+
+6. To run the tests, execute the following command inside the Poetry environment:
+
+```bash
+pytest
+```
