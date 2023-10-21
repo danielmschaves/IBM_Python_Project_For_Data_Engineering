@@ -1,14 +1,10 @@
 # IBM Python Project for Data Engineering
 
 ## Table of Contents
-- [Introduction](#introduction)
 - [Features](#features)
-- [Prerequisites](#prerequisites)
+- [Scenario](#Scenario)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Testing](#testing)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Features
 - **Data Extraction**: Extracts bank market capitalization data from JSON files and exchange rates from CSV files.
@@ -17,9 +13,8 @@
 - **Logging**: Provides detailed logs for auditing and debugging.
 - **Testing**: Unit tests to validate each component of the pipeline.
 
-## Phases
 
-### Scenario
+## Scenario
 
 As a data engineer working for an international financial analysis company, my job was to collect financial data from various sources such as websites, APIs, and files provided by financial analysis firms. 
 
