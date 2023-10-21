@@ -1,8 +1,10 @@
 # Main ETL script that ties everything together
 from datetime import datetime
+import os  # Make sure to import os
 from extract import extract
 from transform import transform
 from load import load
+from extract import extract, extract_exchange_rates  # Import the new function
 
 def log(message):
     timestamp_format = '%Y-%h-%d-%H:%M:%S'
@@ -19,10 +21,17 @@ if __name__ == '__main__':
     log("Extract phase Ended")
 
     log("Transform phase Started")
-    df_transformed = transform(df_bank, "GBP")
+    df_exchange = extract_exchange_rates("data/exchange_rates.csv")
+    transformed_df = transform(df_bank, df_exchange, "GBP")
     log("Transform phase Ended")
 
     log("Load phase Started")
-    load(df_transformed, "GBP")
+    
+    # Define the output path
+    output_path = os.path.join("data", "transformed_data.csv")
+
+    # Call the load function with all required arguments
+    load(transformed_df, "GBP", output_path)
+
     log("Load phase Ended")
 

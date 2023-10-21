@@ -1,36 +1,32 @@
-# Importing required libraries and modules
-import json
 import pandas as pd
+import os
 import pytest
-from ..src.etl.extract import extract_from_json  # Import path based on the project's structure
+from ..src.etl.extract import extract_from_json, extract_exchange_rates, extract  
 
-# Test function to validate the extract_from_json function with a valid JSON file
-def test_extract_from_json_valid_file():
-    """This test checks if the extract_from_json function handles valid JSON properly."""
-    
-    # Given: Arrange the test by providing a sample valid JSON as input
-    sample_json = json.dumps([
-        {"Name": "Bank1", "Market Cap (US$ Billion)": 100},
-        {"Name": "Bank2", "Market Cap (US$ Billion)": 200}
-    ])
-    
-    # When: Act by calling the function
-    df = extract_from_json(sample_json)
-    
-    # Then: Assert to validate the DataFrame has the correct data
-    assert isinstance(df, pd.DataFrame), "Output should be a DataFrame"
-    assert "Name" in df.columns, "DataFrame should have a 'Name' column"
-    assert "Market Cap (US$ Billion)" in df.columns, "DataFrame should have a 'Market Cap (US$ Billion)' column"
-    assert df.iloc[0]["Name"] == "Bank1", "First row should have Name 'Bank1'"
-    assert df.iloc[0]["Market Cap (US$ Billion)"] == 100, "First row should have Market Cap 100"
+# The path where the actual files are saved
+DATA_PATH = "data"
 
-# Test function to validate the extract_from_json function with an invalid JSON file
-def test_extract_from_json_invalid_json():
-    """This test checks if the extract_from_json function handles invalid JSON properly."""
+def test_extract_from_json():
+    json_file_path = os.path.join(DATA_PATH, "bank_market_cap.json")
+    df = extract_from_json(json_file_path)
     
-    # Given: Arrange the test by providing an invalid JSON string
-    invalid_json = "This is not a JSON string"
+    assert isinstance(df, pd.DataFrame), "Should return a DataFrame"
+    assert 'Name' in df.columns, "DataFrame should have a 'Name' column"
+    assert 'Market Cap (US$ Billion)' in df.columns, "DataFrame should have a 'Market Cap (US$ Billion)' column"
+
+def test_extract_exchange_rates():
+    csv_file_path = os.path.join(DATA_PATH, "exchange_rates.csv")
+    df = extract_exchange_rates(csv_file_path)
     
-    # When: Act by calling the function, Then: Assert to expect a ValueError
-    with pytest.raises(ValueError):
-        extract_from_json(invalid_json)
+    assert isinstance(df, pd.DataFrame), "Should return a DataFrame"
+    assert 'Currency' in df.columns, "DataFrame should have a 'Currency' column"
+    assert 'Rate' in df.columns, "DataFrame should have a 'Rate' column"
+
+def test_extract():
+    json_file_path = os.path.join(DATA_PATH, "bank_market_cap.json")
+    df = extract()
+    
+    assert isinstance(df, pd.DataFrame), "Should return a DataFrame"
+    assert 'Name' in df.columns, "DataFrame should have a 'Name' column"
+    assert 'Market Cap (US$ Billion)' in df.columns, "DataFrame should have a 'Market Cap (US$ Billion)' column"
+
