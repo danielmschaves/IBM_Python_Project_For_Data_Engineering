@@ -1,7 +1,7 @@
 import pandas as pd
 import pytest
-from ..src.etl.transform import transform  # Assuming transform function is in this module
-from ..src.etl.extract import extract_from_json  # Assuming extract_from_json function is in this module
+from ..src.etl.transform import transform  
+from ..src.etl.extract import extract_from_json  
 
 # Test function to validate the transformation logic based on actual data
 def test_transform_actual_data():

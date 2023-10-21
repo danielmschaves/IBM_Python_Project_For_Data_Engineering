@@ -2,7 +2,7 @@ import os
 import pandas as pd
 from pathlib import Path
 import pytest
-from ..src.etl.load import load  # Assuming load function is in this module
+from ..src.etl.load import load 
 
 # Test function to validate the loading logic using actual transformed data
 def test_load_actual_data(tmp_path: Path):
