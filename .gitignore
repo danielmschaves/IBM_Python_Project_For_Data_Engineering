@@ -34,6 +34,9 @@ MANIFEST
 pip-log.txt
 pip-delete-this-directory.txt
 
+# Ignore log files
+logs/
+
 # Unit test / coverage reports
 htmlcov/
 .tox/
@@ -54,6 +57,9 @@ coverage.xml
 *.swn
 *.suo
 *.bak
+
+# Ignore the config file containing sensitive API keys
+config.json
 
 # Jupyter Notebook
 .ipynb_checkpoints
