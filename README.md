@@ -18,11 +18,11 @@
 
 As a data engineer working for an international financial analysis company, my job was to collect financial data from various sources such as websites, APIs, and files provided by financial analysis firms. 
 
-- Extract API Data: Collect exchange rate data using the ExchangeRate-API and store the data as a CSV. The data is fetched using the requests library and transformed into a pandas DataFrame. The DataFrame is saved as exchange_rates_1.csv.
+- Extract API Data: Collect exchange rate data using the ExchangeRate-API and store the data as a CSV. The data is fetched using the requests library and transformed into a pandas DataFrame. 
 
 - Web Scraping: Scrape the largest banks' information by market capitalization from a Wikipedia page (https://en.wikipedia.org/wiki/List_of_largest_banks) using BeautifulSoup. The scraped data is stored in a pandas DataFrame and saved as a JSON file named bank_market_cap.json.
 
-- Extract: The first phase involves extracting data from a JSON file named bank_market_cap_1.json. The extracted data is stored in a pandas DataFrame with the columns 'Name' and 'Market Cap (US$ Billion)'.
+- Extract: The first phase involves extracting data from a JSON file. The extracted data is stored in a pandas DataFrame with the columns 'Name' and 'Market Cap (US$ Billion)'.
 
 - Transform: The second phase transforms the extracted data. The 'Market Cap (US$ Billion)' column is converted from USD to GBP using exchange rate data from the exchange_rates.csv file. The transformed data is rounded to 3 decimal places, and the column is renamed to 'Market Cap (GBP$ Billion)'.
 
