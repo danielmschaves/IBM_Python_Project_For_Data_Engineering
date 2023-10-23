@@ -13,6 +13,15 @@ logging.basicConfig(level=logging.INFO)
 
 # Function to fetch HTML from a URL
 def fetch_html(url):
+    """
+    Fetch HTML content from a given URL.
+    
+    Parameters:
+        url (str): The URL to fetch HTML from.
+
+    Returns:
+        str: The HTML content if successful, None otherwise.
+    """
     try:
         response = requests.get(url, timeout=10)
         response.raise_for_status()
@@ -23,10 +32,29 @@ def fetch_html(url):
 
 # Function to parse HTML
 def parse_html(html):
+    """
+    Parse HTML content using BeautifulSoup.
+    
+    Parameters:
+        html (str): The HTML content to parse.
+
+    Returns:
+        bs4.BeautifulSoup: The parsed HTML as a BeautifulSoup object.
+    """
+    
     return BeautifulSoup(html, "html.parser")
 
 # Function to extract relevant data from HTML table
 def extract_data_from_table(soup):
+    """
+    Extract relevant data from an HTML table using BeautifulSoup.
+    
+    Parameters:
+        soup (bs4.BeautifulSoup): The parsed HTML as a BeautifulSoup object.
+
+    Returns:
+        pd.DataFrame: A DataFrame containing the extracted data, or None if extraction failed.
+    """
     data = pd.DataFrame(columns=["Name", "Market Cap (US$ Billion)"])
     target_table = soup.find("table", {"class": "wikitable"})
     
@@ -45,6 +73,16 @@ def extract_data_from_table(soup):
 
 # Function to save DataFrame to JSON
 def save_data_to_json(data, path):
+    """
+    Save a DataFrame to a JSON file.
+    
+    Parameters:
+        data (pd.DataFrame): The DataFrame to save.
+        path (str): The file path to save the DataFrame to.
+
+    Returns:
+        None
+    """
     try:
         with open(path, 'w') as f:
             f.write(data.to_json())

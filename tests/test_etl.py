@@ -5,12 +5,42 @@ from ..src.etl.extract import extract
 from ..src.etl.load import load 
 from ..src.etl.transform import transform 
 
+"""
+Test script for E2E (End-to-End) testing of the ETL (Extract, Transform, Load) pipeline.
+
+This script includes a function that tests the entire ETL process, from data extraction to data transformation
+and finally to data loading.
+
+Functions:
+    test_etl_pipeline(): Tests the entire ETL pipeline and validates each phase.
+
+Usage:
+    Run this script using pytest to validate the entire ETL process.
+
+Example:
+    pytest test_etl_pipeline.py
+"""
+
 # Define paths for test
 JSON_FILE_PATH = "data/bank_market_cap.json"
 CSV_FILE_PATH = "data/exchange_rates.csv"
 OUTPUT_FILE_PATH = "data/transformed_data.csv"
 
 def test_etl_pipeline():
+    """
+    Tests the entire ETL (Extract, Transform, Load) pipeline and validates each phase.
+
+    Steps:
+    - Runs the extract phase and validates the extracted DataFrame.
+    - Runs the transform phase and validates the transformed DataFrame.
+    - Runs the load phase and validates that the data is correctly saved as a CSV file.
+
+    Assertions:
+    - The extracted and loaded DataFrames should not be empty.
+    - Column names should match the expected names at each phase.
+    - The output CSV file should exist after the load phase.
+    """
+
     # Run the extract phase
     df_bank = extract()
     
