@@ -1,9 +1,9 @@
 from datetime import datetime
 import os
-import pandas as pd  # Added import for pandas
-from extract import extract, extract_exchange_rates  # Make sure these functions exist in your extract module
-from transform import transform  # Make sure this function exists in your transform module
-from load import load  # Make sure this function exists in your load module
+import pandas as pd 
+from extract import extract, extract_exchange_rates  
+from transform import transform  
+from load import load  
 
 # Importing scraping functions
 from ..webscrapping.bank_info_scraper import fetch_html, parse_html, extract_data_from_table, save_data_to_json
