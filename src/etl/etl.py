@@ -6,8 +6,8 @@ from transform import transform  # Make sure this function exists in your transf
 from load import load  # Make sure this function exists in your load module
 
 # Importing scraping functions
-from ..webscrapping.bank_info_scraper import fetch_html, parse_html, extract_data_from_table, save_data_to_json
-from ..webscrapping.exchange_rate_api_scraper import get_api_key_from_config, fetch_and_save_exchange_rate
+from bank_info_scraper import fetch_html, parse_html, extract_data_from_table, save_data_to_json
+from exchange_rate_api_scraper import get_api_key_from_config, fetch_and_save_exchange_rate
 
 # Constants for URL and Output Path
 URL = "https://en.wikipedia.org/wiki/List_of_largest_banks"

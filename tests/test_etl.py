@@ -46,6 +46,7 @@ def test_etl_pipeline():
     
     # Validate the extracted data
     assert isinstance(df_bank, pd.DataFrame), "Extract phase should return a DataFrame"
+    assert not df_bank.empty, "Extracted DataFrame should not be empty"
     assert 'Name' in df_bank.columns, "DataFrame should have a 'Name' column"
     assert 'Market Cap (US$ Billion)' in df_bank.columns, "DataFrame should have a 'Market Cap (US$ Billion)' column"
     
@@ -55,6 +56,7 @@ def test_etl_pipeline():
     
     # Validate the transformed data
     assert isinstance(transformed_df, pd.DataFrame), "Transform phase should return a DataFrame"
+    assert not transformed_df.empty, "Transformed DataFrame should not be empty"
     assert f"Market Cap (GBP$ Billion)" in transformed_df.columns, "Transformed DataFrame should have a 'Market Cap (GBP$ Billion)' column"
     
     # Run the load phase

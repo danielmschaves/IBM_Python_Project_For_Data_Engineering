@@ -65,3 +65,20 @@
 2023-Oct-21-11:34:52,Transform phase Ended
 2023-Oct-21-11:34:52,Load phase Started
 2023-Oct-21-11:34:52,Load phase Ended
+2023-Oct-24-18:46:22,ETL Job Started
+2023-Oct-24-18:46:22,Bank Info Extract phase Started
+2023-Oct-24-18:46:23,Bank Info Extract phase Ended
+2023-Oct-24-18:46:23,Exchange Rate Extract phase Started
+2023-Oct-24-18:47:48,ETL Job Started
+2023-Oct-24-18:47:48,Bank Info Extract phase Started
+2023-Oct-24-18:47:49,Bank Info Extract phase Ended
+2023-Oct-24-18:47:49,Exchange Rate Extract phase Started
+2023-Oct-24-18:50:46,ETL Job Started
+2023-Oct-24-18:50:46,Bank Info Extract phase Started
+2023-Oct-24-18:50:47,Bank Info Extract phase Ended
+2023-Oct-24-18:50:47,Exchange Rate Extract phase Started
+2023-Oct-24-18:50:47,Exchange Rate Extract phase Ended
+2023-Oct-24-18:50:47,Transform phase Started
+2023-Oct-24-18:50:47,Transform phase Ended
+2023-Oct-24-18:50:47,Load phase Started
+2023-Oct-24-18:50:47,Load phase Ended
