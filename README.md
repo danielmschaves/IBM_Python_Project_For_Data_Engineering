@@ -30,6 +30,22 @@ As a data engineer working for an international financial analysis company, my j
 
 - Logging: A logging function is implemented to keep track of the ETL process. The function logs messages with timestamps in a file named logfile.txt.
 
+## API Layer Signup and Configuration
+
+1. **Sign Up for API Layer**: To fetch the latest exchange rates, sign up for a free or premium account on [API Layer](https://apilayer.com/).
+
+2. **API Key**: After signing up, navigate to your dashboard to find your API key.
+
+3. **Configure API Key**: Create a `config.json` file in the root directory of the project. Add your API key like this:
+
+    ```json
+    {
+      "EXCHANGE_API_KEY": "your_api_key_here"
+    }
+    ```
+
+    Replace `"your_api_key_here"` with your actual API key.
+
 ## Installation
 
 1. Clone the repository:
